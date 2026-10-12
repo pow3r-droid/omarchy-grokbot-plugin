@@ -2,11 +2,13 @@
   "schemaVersion": 1,
   "id": "pow3r-droid.grokbot",
   "name": "Grok Bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "pow3r-droid",
   "license": "MIT",
   "description": "Bar badge that toggles the Grok Bot drop-down panel (special:grokbot) or launches the app.",
-  "kinds": ["bar-widget"],
+  "kinds": [
+    "bar-widget"
+  ],
   "entryPoints": {
     "barWidget": "BarWidget.qml"
   },
@@ -15,12 +17,30 @@
     "description": "Toggle the Grok Bot panel; dot shows whether a Grok Bot window is open.",
     "category": "AI",
     "defaultSection": "right",
-    "aliases": ["grokbot"],
+    "aliases": [
+      "grokbot"
+    ],
     "allowMultiple": false,
     "defaults": {},
     "schema": [
-      { "key": "showStatusDot", "type": "bool", "label": "Show open/closed status dot", "default": true },
-      { "key": "launchCommand", "type": "string", "label": "Launch command", "default": "grok-bot" }
+      {
+        "key": "showStatusDot",
+        "type": "bool",
+        "label": "Show open/closed status dot",
+        "default": true
+      },
+      {
+        "key": "launchCommand",
+        "type": "string",
+        "label": "Launch command",
+        "default": "grok-bot"
+      },
+      {
+        "key": "iconPath",
+        "type": "string",
+        "label": "Custom icon file (SVG/PNG, local path; empty = built-in badge)",
+        "default": ""
+      }
     ]
   }
 }

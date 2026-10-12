@@ -36,3 +36,8 @@ The panel toggle expects the theme's `special:grokbot` window rule from omarchy-
 ## License
 
 MIT
+
+
+## Custom icon
+
+Set `iconPath` to any local SVG/PNG (e.g. an icon another installed app already provides). No third-party logos are bundled in this repo.

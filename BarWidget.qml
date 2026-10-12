@@ -16,6 +16,11 @@ BarWidget {
   readonly property color accent: (typeof Color !== "undefined" && Color.accent) ? Color.accent : "#4fd1ff"
   readonly property bool showDot: setting("showStatusDot", true) !== false
   readonly property string launchCommand: String(setting("launchCommand", "grok-bot"))
+  readonly property string iconPath: {
+    var p = String(setting("iconPath", "") || "")
+    if (p.indexOf("~/") === 0) p = Quickshell.env("HOME") + p.substring(1)
+    return p
+  }
 
   readonly property bool hasWindow: {
     var list = Hyprland.toplevels ? Hyprland.toplevels.values : []
@@ -56,8 +61,18 @@ BarWidget {
     // Original mark: hexagonal mission-patch outline with an orbit dot.
     iconComponent: Component {
       Item {
+        Image {
+          visible: root.iconPath !== ""
+          anchors.fill: parent
+          source: root.iconPath !== "" ? ("file://" + root.iconPath) : ""
+          sourceSize.width: width * 2
+          sourceSize.height: height * 2
+          fillMode: Image.PreserveAspectFit
+          smooth: true
+        }
         Canvas {
           id: patch
+          visible: root.iconPath === ""
           anchors.fill: parent
           property color stroke: button.foreground
           onStrokeChanged: requestPaint()
